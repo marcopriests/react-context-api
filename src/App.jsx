@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import PostsPage from './Pages/PostsPage'
+import PostsContext from './Contexts/PostsContext'
 
 const posts = [
   { id: 1, title: 'React Basis', content: 'React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.', category: 'FrontEnd' },
@@ -13,7 +14,9 @@ function App() {
 
   return (
     <>
-      <PostsPage posts={initialPosts} />
+      <PostsContext.Provider value={{ posts: initialPosts }}>
+        <PostsPage />
+      </PostsContext.Provider>
     </>
   )
 }
